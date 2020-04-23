@@ -10,6 +10,7 @@
 	var symmetry;
 	var variation;
 	var totalCircles = 0;
+	var numCircles;
 	
 	
 	if (typeof window.location.hash.split('#')[1] !== "undefined") {
@@ -72,7 +73,7 @@
 		createGradient(this.id);
 	});
 
-	$('p[role="toolbar"]').prepend('Generate: <input type="button" value="Color" id="color" title="Regenerate colors"/>');
+	$('p[role="toolbar"]').prepend('Generate: <input type="bu tton" value="Color" id="color" title="Regenerate colors"/>');
 
 	$('input').on('click', function (e) {
 		createGradient(this.id);
@@ -105,7 +106,9 @@
 		RGB = red + ',' + green + ',' + blue + ',' + '1';
 		bgColor = invertR + ',' + invertG + ',' + invertB + ',' + '.5';
 
-		variation = (getInts(7,1));
+		variation = (getInts(6,2));
+
+		numCircles = getInts(8,2);
 
 		baseCircleSize = (getInts(10,1)+10);
 
@@ -135,7 +138,7 @@
 	function blobGrad() {
 
 		var blob = 'background: ';
-		var numCircles = getInts(8,2);
+		
 		var backGroundSize = bgSize();
 		var circleSize = baseCircleSize;
 		var horz = 0;
@@ -172,12 +175,12 @@
 					blob = addBlob(blob, circleSize, (((backGroundVert/2) + vert)*-1), ((backGroundHorz/2) + horz));
 
 					if (vert%2 == 0) {
-						vert = ((vert + i) + (circleSize-1)) * variation;
-						//changePosition((vert + i), circleSize, variation);
+						//vert = ((vert + i) + (circleSize-1)) * variation;
+						vert = changePosition((vert + i), circleSize, variation);
 					}
 					else {
-						vert = ((vert + i) - (circleSize-1)) * variation;
-						//changePosition((vert + i), (circleSize*-1), variation);
+						//vert = ((vert + i) - (circleSize-1)) * variation;
+						vert = changePosition((vert + i), (circleSize*-1), variation);
 					}
 				} 
 				else if(symmetry >= 5 && symmetry <= 6) {
