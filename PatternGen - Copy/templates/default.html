@@ -18,6 +18,23 @@
   </div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+		$(".openbtn").click(function() {
+			$(".openbtn").hide();
+			document.getElementById("mySidebar").style.width = "380px";
+			document.getElementById("main").style.marginLeft = "380px";
+		});
+
+		/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+		$(".closebtn").click(function() {
+			$(".openbtn").show();
+			document.getElementById("mySidebar").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		});
+	});
+</script>
 
 <style>
 /* Style the header with a grey background and some padding */
@@ -73,7 +90,78 @@
     float: none;
   }
 }
+
+/* The sidebar menu */
+.sidebar {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 1;
+	left: 0;
+	background-color: #111; /* Black*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar button {
+	margin: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	width: 320px
+}
+
+.sidebar input {
+	margin: 0px 0px 8px 32px;
+	font-size: 25px;
+	display: block;
+	width: 220px;
+	float: left;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar button:hover {
+	color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #111;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+}
+
+.openbtn:hover {
+	background-color: #444;
+}
+
+/*Prevent's objects from moving position while the sidebar opens.*/
+#sidebarWrapper {
+	list-style: none;
+	width: 380px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
 </style>
+
 </head>
 
 <body>
